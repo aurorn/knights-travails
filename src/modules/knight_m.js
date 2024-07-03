@@ -21,7 +21,7 @@ export const knightMoves = (start, end) => {
                 const newX = x + dx;
                 const newY = y + dy;
 
-                if (isValidMove(newx, newY) && !visited.has([newX, newY].toString())) {
+                if (isValidMove(newX, newY) && !visited.has([newX, newY].toString())) {
                     visited.add([newX, newY].toString());
                     queue.push([...path, [newX, newY]]);
                 }
