@@ -29,20 +29,46 @@ export const createButtons = (appMain) => {
     let start = null;
     let end = null;
 
-    const board = createChessBoard();
-    appMain.appendChild(board);
+    const initializeBoard = () => {
+        const newBoard = createChessBoard();
+        appMain.appendChild(newBoard);
+
+        newBoard.addEventListener('click', (e) => {
+            const target = e.target;
+            if (target.classList.contains('chess-square')) {
+                const pos = target.getAttribute('data-pos').split(',').map(Number);
+                if (newBoard.classList.contains('placing-knight')) {
+                    start = pos;
+                    target.classList.add('knight');
+                    newBoard.classList.remove('placing-knight');
+                } else if (newBoard.classList.contains('choosing-end-point')) {
+                    end = pos;
+                    target.classList.add('end-point');
+                    newBoard.classList.remove('choosing-end-point');
+                }
+                if (start && end) {
+                    goBtn.disabled = false;
+                }
+            }
+        });
+    };
+
+    initializeBoard();
 
     placeKnightBtn.addEventListener('click', () => {
+        const board = appMain.querySelector('.chess-board');
         board.classList.add('placing-knight');
     });
 
     chooseEndPointBtn.addEventListener('click', () => {
+        const board = appMain.querySelector('.chess-board');
         board.classList.add('choosing-end-point');
     });
 
     goBtn.addEventListener('click', () => {
         if (start && end) {
             const path = knightMoves(start, end);
+            const board = appMain.querySelector('.chess-board');
             path.forEach((pos, index) => {
                 const square = board.querySelector(`[data-pos="${pos}"]`);
                 if (square) {
@@ -55,29 +81,10 @@ export const createButtons = (appMain) => {
     clearBtn.addEventListener('click', () => {
         start = null;
         end = null;
-        board.innerHTML = '';
-        appMain.removeChild(board);
-        const newBoard = createChessBoard();
-        appMain.appendChild(newBoard);
-    });
-
-    board.addEventListener('click', (e) => {
-        const target = e.target;
-        if (target.classList.contains('chess-square')) {
-            const pos = target.getAttribute('data-pos').split(',').map(Number);
-            if (board.classList.contains('placing-knight')) {
-                start = pos;
-                target.classList.add('knight');
-                board.classList.remove('placing-knight');
-            } else if (board.classList.contains('choosing-end-point')) {
-                end = pos;
-                target.classList.add('end-point');
-                board.classList.remove('choosing-end-point');
-            }
-            if (start && end) {
-                goBtn.disabled = false;
-            }
-        }
+        goBtn.disabled = true;
+        const board = appMain.querySelector('.chess-board');
+        board.remove();
+        initializeBoard();
     });
 
     return buttonsContainer;

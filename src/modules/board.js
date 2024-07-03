@@ -1,5 +1,3 @@
-// src/modules/board.js
-
 export const createChessBoard = () => {
     const board = document.createElement('div');
     board.className = 'chess-board';
