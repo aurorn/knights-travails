@@ -68,6 +68,8 @@ html, body {
 .knight {
     background-image: url('./icons/knighticon.png');
     background-size: cover;
+    width: 50px;
+    height: 50px;
 }
 
 button {
@@ -78,4 +80,22 @@ button {
 
 .end-point {
     background-color: rgba(255, 0, 0, 0.5);
+}
+
+footer {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+}
+
+footer a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
 }
