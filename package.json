@@ -1,0 +1,25 @@
+{
+  "name": "knights-travails",
+  "version": "1.0.0",
+  "description": "Odin Project- Knights Travails",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aurorn/knights-travails.git"
+  },
+  "author": "SamCason",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aurorn/knights-travails/issues"
+  },
+  "homepage": "https://github.com/aurorn/knights-travails#readme",
+  "devDependencies": {
+    "css-loader": "^7.1.2",
+    "html-webpack-plugin": "^5.6.0",
+    "style-loader": "^4.0.0",
+    "webpack-cli": "^5.1.4"
+  }
+}
