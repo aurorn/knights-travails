@@ -1,6 +1,6 @@
 # Knights Travails
 
-Knights Travails is a web application that visualizes the shortest path for a knight on a chessboard from a starting position to an ending position using the Breadth-First Search (BFS) algorithm.
+Knights Travails is a web application for the Odin Project that visualizes the shortest path for a knight on a chessboard from a starting position to an ending position using the Breadth-First Search (BFS) algorithm.
 
 ## Features
 
